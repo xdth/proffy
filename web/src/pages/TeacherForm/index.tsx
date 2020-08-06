@@ -50,6 +50,36 @@ function TeacherForm() {
           <Input name="cost" label="Prix" />
         </fieldset>
 
+        <fieldset>
+          <legend>
+            Horaires disponibles
+            <button type="button">
+              + Nouveau horaire
+            </button>
+          </legend>
+
+          <div className="schedule-item">
+            <Select
+              name="subject"
+              label="Sujet"
+              options={[
+                { value: 'Arts', label: 'Arts' },
+                { value: 'Biologie', label: 'Biologie' },
+                { value: 'Sciences', label: 'Sciences' },
+                { value: 'Education physique', label: 'Education physique' },
+                { value: 'Physique', label: 'Physique' },
+                { value: 'Geographie', label: 'Geographie' },
+                { value: 'Histoire', label: 'Histoire' },
+                { value: 'Matémathiques', label: 'Matémathiques' },
+                { value: 'Français', label: 'Français' },
+                { value: 'Chimie', label: 'Chimie' },
+              ]}
+            />
+            <Input name="from" label="De" type="time" ></Input>
+            <Input name="to" label="À" type="time" ></Input>
+          </div>
+        </fieldset>
+
         <footer>
           <p>
             <img src={warningIcon} alt="Important" />
