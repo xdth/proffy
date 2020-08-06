@@ -17,28 +17,28 @@ function Landing(){
       <div id="page-landing-content" className="container">
         <div className="logo-container">
           <img src={logoImg} alt="" />
-          <h2>Sua plataforma de estudos online.</h2>
+          <h2>Votre portail d'études en ligne.</h2>
         </div>
 
         <img
           src={landingImg}
-          alt="Plataforma de estudos" 
+          alt="Portail d'études" 
           className="hero-image"
         />
 
         <div className="buttons-container">
           <Link to="/study" className="study">
-            <img src={studyIcon} alt="Estudar"/>
-            Estudar
+            <img src={studyIcon} alt="Étudiez"/>
+            Étudiez
           </Link>
           <Link to="/give-classes" className="give-classes">
-            <img src={giveClassesIcon} alt="Dar aulas"/>
-            Dar aulas
+            <img src={giveClassesIcon} alt="Offrir des cours"/>
+            Offrir des cours
           </Link>
         </div>
 
         <span className="total-connections">
-          Total de 200 conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo"/>
+          Total de 200 connexions déjà realisées<img src={purpleHeartIcon} alt="purple heart"/>
         </span>
       </div>
     </div>

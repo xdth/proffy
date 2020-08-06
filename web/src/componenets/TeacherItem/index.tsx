@@ -11,7 +11,7 @@ function TeacherItem() {
           <img src="https://avatars1.githubusercontent.com/u/12601116?s=460&u=a654dd1ff2aa806f44650c70871b0b614b99d64f&v=4" alt="xdth"/>
           <div>
             <strong>xdth</strong>
-            <span>Química</span>
+            <span>Chimie</span>
           </div>
         </header>
 
@@ -21,12 +21,12 @@ function TeacherItem() {
 
         <footer>
           <p>
-            Preço/hora
-            <strong>R$ 80,00</strong>
+            Pris/heure
+            <strong>€ 80,00</strong>
           </p>
           <button>
             <img src={whatsappIcon} alt="Whatsapp"/>
-            Entrar em contato
+            Whatsapp
           </button>
         </footer>
       </article>
