@@ -2,7 +2,6 @@ import React from 'react';
 
 import PageHeader from '../../componenets/PageHeader';
 import TeacherItem from '../../componenets/TeacherItem';
-import Input from '../../componenets/Input';
 import Select from '../../componenets/Select'
 
 import './styles.css';;
