@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import PageHeader from '../../componenets/PageHeader';
 import Input from '../../componenets/Input'
@@ -12,6 +13,8 @@ import api from '../../services/api';
 import './styles.css';
 
 function TeacherForm() {
+  const history = useHistory();
+
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
@@ -60,6 +63,8 @@ function TeacherForm() {
       schedule: scheduleItems
     }).then(() => {
       alert('Enregistré avec succès!')
+
+      history.push('/');
     }).catch(() => {
       alert('Ooops, un problème est suvernu.')
     });
