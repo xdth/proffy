@@ -4,15 +4,35 @@ import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 
 import PageHeader from '../../components/PageHeader';
-import TeacherItem from '../../components/TeacherItem';
+import TeacherItem, { Teacher } from '../../components/TeacherItem';
+
+import api from '../../services/api';
 
 import styles from './styles';
 
 function TeacherList() {
+  const [teachers, setTeachers] = useState([]);
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+
+  const [subject, setSubject] = useState('');
+  const [week_day, setWeekday] = useState('');
+  const [time, setTime] = useState('');
 
   function handleToggleFiltersVisible() {
     setIsFiltersVisible(!isFiltersVisible);
+  }
+
+  async function handleFIltersSubmit() {
+    const response = await api.get('classes', {
+      params: {
+        subject,
+        week_day,
+        time,
+      }
+    });
+
+    setIsFiltersVisible(false);
+    setTeachers(response.data);
   }
 
   return (
@@ -30,6 +50,8 @@ function TeacherList() {
             <Text style={styles.label}>Sujet</Text>
             <TextInput
               style={styles.input}
+              value={subject}
+              onChangeText={text => setSubject(text)}
               placeholder="Quel sujet?"
               placeholderTextColor="#C1BCCC"
             />
@@ -39,6 +61,8 @@ function TeacherList() {
                 <Text style={styles.label}>Jour de la semaine</Text>
                 <TextInput
                   style={styles.input}
+                  value={week_day}
+                  onChangeText={text => setWeekday(text)}
                   placeholder="Quel jour?"
                   placeholderTextColor="#C1BCCC"
                 />
@@ -48,12 +72,14 @@ function TeacherList() {
                 <Text style={styles.label}>Horaire</Text>
                 <TextInput
                   style={styles.input}
+                  value={time}
+                  onChangeText={text => setTime(text)}
                   placeholder="Quel horaire?"
                   placeholderTextColor="#C1BCCC"
                 />
               </View>
             </View>
-            <RectButton style={styles.submitButton}>
+            <RectButton onPress={handleFIltersSubmit} style={styles.submitButton}>
               <Text style={styles.submitButtonText}>Filtrer</Text>
             </RectButton>
           </View>
@@ -67,14 +93,9 @@ function TeacherList() {
           paddingBottom: 16,
         }}
       >
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
-        <TeacherItem />
+        {teachers.map((teacher: Teacher) => {
+          return <TeacherItem key={teacher.id} teacher={teacher} />
+        })}
       </ScrollView>
     </View>
   );
